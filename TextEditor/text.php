@@ -19,7 +19,7 @@ if (file_exists('test.txt')) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = $_POST['editedText'];
 
-    $myfile = fopen("test.txt", "w+") or die("Unable to open file!");
+    $myfile = fopen("test.txt", "a") or die("Unable to open file!");
 
     fwrite($myfile, $data);
 }
