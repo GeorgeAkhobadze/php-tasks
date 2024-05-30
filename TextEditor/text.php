@@ -1,5 +1,5 @@
 <?php
-$string = '';
+
 
 function dd($value)
 {
@@ -12,18 +12,21 @@ function dd($value)
 
 $data = '';
 
-$myfile = fopen("test.txt", "w+") or die("Unable to open file!");
-if(filesize('test.txt') > 0) {
-    $data = fread($myfile,filesize("test.txt"));
+if (file_exists('test.txt')) {
+    $data = file_get_contents('test.txt');
 }
 
-dd($data);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $data = $_POST['editedText'];
 
-$string = file_get_contents('./test.txt');
+    $myfile = fopen("test.txt", "w+") or die("Unable to open file!");
 
-if($_SERVER["REQUEST_METHOD"] === "POST") {
-    $string = file_get_contents($_FILES['file']['tmp_name']);
-
-    echo htmlspecialchars($_SERVER["PHP_SELF"]);
+    fwrite($myfile, $data);
 }
+
+
+
+
+
+
 
