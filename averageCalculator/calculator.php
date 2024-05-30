@@ -11,9 +11,9 @@ function dd($value)
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $numbers = $_POST['numbers'];
     $result = '';
-    $result = array_filter(explode(',', $numbers));
+    $result = array_filter(array_map('trim', explode(',', $numbers)));
     $checkIntegers = array_reduce($result, function ($result, $item) {
-        return is_numeric($item); }
+        return $result && is_numeric($item); }
         , true);
     if($checkIntegers) {
         $average = round(array_sum($result) / count($result), 2);;
