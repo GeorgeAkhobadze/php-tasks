@@ -10,7 +10,6 @@
 </head>
 <body>
 <main>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="w-full max-w-lg mx-auto mt-5">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="length">
             Number
         </label>
@@ -32,8 +31,6 @@
         </div>
 
         <button type="submit" class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Submit</button>
-        <?= $string ?>
-    </form>
 </main>
 </body>
 </html>
