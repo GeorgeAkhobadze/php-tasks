@@ -15,7 +15,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $checkIntegers = array_reduce($result, function ($result, $item) {
         return $result && is_numeric($item); }
         , true);
-    if($checkIntegers) {
+
+    if($checkIntegers && (count($result) > 0)) {
         $average = round(array_sum($result) / count($result), 2);;
     } else {
         $error = 'Invalid Input, example: 1,2,3';
