@@ -10,15 +10,15 @@ function dd($value)
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $numbers = $_POST['numbers'];
-    $result = '';
-    $result = array_filter(array_map('trim', explode(',', $numbers)));
-    $checkIntegers = array_reduce($result, function ($result, $item) {
-        return $result && is_numeric($item); }
-        , true);
+    $error = '';
 
-    if($checkIntegers && (count($result) > 0)) {
-        $average = round(array_sum($result) / count($result), 2);;
-    } else {
-        $error = 'Invalid Input, example: 1,2,3';
-    }
+    $result = array_filter(explode(',', $numbers), function ($item) use (&$error) {
+        if(is_numeric($item)) {
+            return $item;
+        } else {
+            return $error = 'Invalid Input, example: 1,2,3';
+
+        }
+    });
+    $average = round(array_sum($result) / count($result), 2);a
 }
