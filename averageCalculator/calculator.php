@@ -20,5 +20,5 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         }
     });
-    $average = round(array_sum($result) / count($result), 2);a
+    $average = round(array_sum($result) / count($result), 2);
 }
